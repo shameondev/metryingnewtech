@@ -1,11 +1,25 @@
 {
   "compilerOptions": {
+    // Куда прозводится сборка. Неактуально, потому что использую вебпак
     "outDir": "./dist/",
+    // Не позволяет использовать any неявно
     "noImplicitAny": true,
-    "module": "es6",
+    // Способ модульной сборки
+    "module": "ESNext",
+    // В какую спецификацию компилируем
     "target": "es5",
     "jsx": "react",
     "allowJs": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    // позволяет работать с пакетами, которые используют common js
+    // как с обычними, т.е. использовать import
+    "esModuleInterop": true,
+    // позовляет не писать * as в импортах
+    "allowSyntheticDefaultImports": true,
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
   }
 }
