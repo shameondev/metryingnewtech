@@ -1,19 +1,22 @@
-import { Suspense } from 'react';
+import {Suspense} from 'react';
 import {Link, Route, Routes} from 'react-router-dom';
-import './index.scss'
+import './styles/index.scss'
 import {MainPage} from "./pages/MainPage";
 import {AboutPage} from "./pages/AboutPage";
+import {useTheme} from "./theme/useTheme";
 
 export const App = () => {
+    const {theme, toggleTheme} = useTheme();
+
     return (
-        <div className="app">
-            Hello World!
-            <Link to="/">Главная</Link>
-            <Link to="/about">О сайте</Link>
+        <div className={`app ${theme}`}>
+            <div onClick={toggleTheme}>Switch theme</div>
+            <Link to="/">Main</Link>
+            <Link to="/about">About</Link>
             <Suspense fallback={<div>Loading...</div>}>
                 <Routes>
-                   <Route path="/" element={<MainPage/>} />
-                   <Route path="/about" element={<AboutPage/>} />
+                    <Route path="/" element={<MainPage/>}/>
+                    <Route path="/about" element={<AboutPage/>}/>
                 </Routes>
             </Suspense>
         </div>
