@@ -4,12 +4,13 @@ import './styles/index.scss'
 import {MainPage} from "./pages/MainPage";
 import {AboutPage} from "./pages/AboutPage";
 import {useTheme} from "./theme/useTheme";
+import cn from './helpers/classNames/classNames';
 
 export const App = () => {
     const {theme, toggleTheme} = useTheme();
 
     return (
-        <div className={`app ${theme}`}>
+        <div className={cn('app', {}, [theme])}>
             <div onClick={toggleTheme}>Switch theme</div>
             <Link to="/">Main</Link>
             <Link to="/about">About</Link>
