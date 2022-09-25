@@ -6,13 +6,14 @@ import { Navbar } from 'widgets/Navbar';
 import { useTheme } from 'shared/lib/useTheme';
 import { Sidebar } from 'widgets/Sidebar';
 import { Suspense } from 'react';
+import { PageLoader } from 'widgets/PageLoader';
 
 export const App = () => {
     const { theme } = useTheme();
 
     return (
         <div className={cn('app', {}, [theme])}>
-            <Suspense fallback="">
+            <Suspense fallback={<PageLoader />}>
                 <Navbar />
                 <div className="content-page">
                     <Sidebar />
