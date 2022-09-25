@@ -2,7 +2,7 @@ import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BuildOptions } from './types/config';
 
-export const buildLoaders = ({ isDev }: BuildOptions): webpack.RuleSetRule[] => {
+export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
     const fileLoader = {
         use: [
             {
@@ -10,6 +10,26 @@ export const buildLoaders = ({ isDev }: BuildOptions): webpack.RuleSetRule[] => 
             },
         ],
         test: /\.(png|jpe?g|gif|woff2|woff)$/i,
+    };
+
+    const babelLoader = {
+        test: /\.(js|jsx|tsx|ts)$/,
+        exclude: /node_modules/,
+        use: {
+            loader: 'babel-loader',
+            options: {
+                presets: ['@babel/preset-env'],
+                plugins: [
+                    [
+                        'i18next-extract',
+                        {
+                            locales: ['ru', 'en'],
+                            keyAsDefaultValue: true,
+                        },
+                    ],
+                ],
+            },
+        },
     };
 
     const svgLoader = {
@@ -25,7 +45,8 @@ export const buildLoaders = ({ isDev }: BuildOptions): webpack.RuleSetRule[] => 
                 loader: 'css-loader',
                 options: {
                     modules: {
-                        auto: (resPath: string) => (resPath.includes('.module.')),
+                        auto:
+                            (resPath: string) => (resPath.includes('.module.')),
                         localIdentName: isDev
                             ? '[path][name]__[local]--[hash:base64:3]'
                             : '[hash:base64:6]',
@@ -45,7 +66,8 @@ export const buildLoaders = ({ isDev }: BuildOptions): webpack.RuleSetRule[] => 
     return [
         fileLoader,
         svgLoader,
+        babelLoader,
         typesriptLoader,
         cssLoaders,
     ];
-};
+}
