@@ -1,5 +1,5 @@
 import { cn } from 'shared/lib/classNames';
-import { useTheme } from 'shared/lib/useTheme';
+import { useTheme } from 'shared/lib/hooks/useTheme';
 import LightIcon from 'shared/assets/icons/theme-light.svg';
 import DarkIcon from 'shared/assets/icons/theme-dark.svg';
 import { Theme } from 'app/providers/ThemeProvider';
