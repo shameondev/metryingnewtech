@@ -5,17 +5,11 @@ import { AppRouter } from 'app/providers/RouteProvider/ui/AppRouter';
 import { Navbar } from 'widgets/Navbar';
 import { useTheme } from 'shared/lib/hooks/useTheme';
 import { Sidebar } from 'widgets/Sidebar';
-import { Suspense, useEffect } from 'react';
+import { Suspense } from 'react';
 import { PageLoader } from 'widgets/PageLoader';
 
 export const App = () => {
     const { theme } = useTheme();
-
-    useEffect(() => {
-        if (Math.random() < 0.5) {
-            throw new Error();
-        }
-    }, []);
 
     return (
         <div className={cn('app', {}, [theme])}>
