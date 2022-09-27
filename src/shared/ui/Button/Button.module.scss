@@ -8,3 +8,10 @@
     background: none;
     outline: none;
 }
+
+.main {
+    background: var(--inverted-bg-color);
+    color: var(--secondary-color);
+    border-radius: 8px;
+    padding: 10px 20px;
+}

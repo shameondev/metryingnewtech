@@ -1,5 +1,8 @@
 {
-  "Язык": "English",
   "Title": "Title",
-  "Страница не найдена": "Page not found"
+  "Обновить страницу": "Reload Page",
+  "Переключить": "Toggle",
+  "Произошла непредвиденная ошибка": "Unexpected error",
+  "Страница не найдена": "Page not found",
+  "Язык": "English"
 }

@@ -3,7 +3,8 @@ import { ButtonHTMLAttributes, FC } from 'react';
 import s from './Button.module.scss';
 
 export enum ThemeButton {
-    CLEAR = 'clear'
+    CLEAR = 'clear',
+    MAIN = 'main'
 }
 
 type ButtonProps = {
@@ -12,7 +13,7 @@ type ButtonProps = {
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const Button: FC<ButtonProps> = ({
-    className, theme, children, ...rest
+    className, theme = ThemeButton.MAIN, children, ...rest
 }) => (
     <button
         type="button"
