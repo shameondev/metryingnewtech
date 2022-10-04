@@ -4,7 +4,8 @@ import s from './Button.module.scss';
 
 export enum ThemeButton {
     CLEAR = 'clear',
-    MAIN = 'main'
+    MAIN = 'main',
+    OUTLINE = 'outline',
 }
 
 type ButtonProps = {
